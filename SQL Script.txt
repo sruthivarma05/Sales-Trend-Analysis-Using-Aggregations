@@ -1,0 +1,8 @@
+-- SQL Script
+
+SELECT strftime('%Y-%m', DATE(substr(Order_Date,7,4) || '-' || substr(Order_Date,1,2) || '-' || substr(Order_Date,4,2))) AS Month,
+       SUM(Sales) AS Revenue,
+       COUNT(DISTINCT Order_ID) AS Order_Volume
+FROM orders
+GROUP BY Month
+ORDER BY Month;
